@@ -6,6 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="/js/main.js" defer></script>
+    <script src="/js/login.js" defer></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
@@ -29,7 +31,23 @@
 </header>
 
 <div class="container">
+    <!-- Main content goes here -->
+    <div class="heading-box">
+        <h1>SIGN IN</h1>
+        <p>Sign in to access your profile</p>
+    </div>
+    <div class="login-container">
+        <form id="login-form">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Type your username" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Type your password" required>
 
+            <input type="submit" id="login-btn" value="Login">
+
+            <p>Don't have an account? </p>
+            <a href="/pages/register.html">SIGN UP</a>
+        </form>
 </div>
 
 <nav id="sidebar">

@@ -29,8 +29,28 @@ header.sticky {
     }
 
     #restaurant-list {
-        font-size: 1.2rem; /* Font size for tablets and small desktops */
+        font-size: 1.2rem;
     }
+
+    h1 {
+        font-size: 2.6rem;
+    }
+
+    .heading-box p {
+        font-size: 1.8rem;
+    }
+
+    input {
+        font-size: 1.1rem;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+    #login-form, #signup-form {
+        font-size: 0.805rem;
+    }
+
 }
 
 @media screen and (min-width: 992px) {
@@ -39,9 +59,29 @@ header.sticky {
     }
 
     #restaurant-list {
-        font-size: 1.3rem; /* Font size for medium desktops */
+        font-size: 1.3rem;
 
     }
+
+    h1 {
+        font-size: 2.7rem;
+    }
+
+    .heading-box p {
+        font-size: 1.9rem;
+    }
+
+    input {
+        font-size: 1.2rem;
+    }
+
+    button {
+        font-size: 1.1rem;
+    }
+    #login-form, #signup-form {
+        font-size: 0.81rem;
+    }
+
 }
 
 @media screen and (min-width: 1200px) {
@@ -50,7 +90,27 @@ header.sticky {
     }
 
     #restaurant-list {
-        font-size: 1.4rem; /* Font size for large desktops */
+        font-size: 1.4rem;
+    }
+
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    .heading-box p {
+        font-size: 2rem;
+    }
+
+    input {
+        font-size: 1.3rem;
+    }
+
+    button {
+        font-size: 1.2rem;
+    }
+
+    #login-form, #signup-form {
+        font-size: 0.82rem;
     }
 }
 
@@ -101,7 +161,26 @@ header.sticky {
     }
 
     #hamburger-icon {
-        display: block;
+        display: inline;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .heading-box p {
+        font-size: 1.8rem;
+    }
+
+    input {
+        font-size: 1rem;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+    #login-form, #signup-form {
+        font-size: 0.8rem;
     }
 }
 
@@ -149,7 +228,6 @@ header.sticky {
 
 h1  {
     color: #F3A161;
-    font-size: 2.5rem;
     text-shadow: 2px 2px #254653;
 }
 
@@ -159,10 +237,6 @@ h1  {
     margin-bottom: 2rem;
 }
 
-.heading-box p {
-    font-size: 1.8rem;
-}
-
 .search-box {
     display: flex;
     justify-content: center;
@@ -170,7 +244,6 @@ h1  {
 }
 
 input {
-    font-size: 1rem;
     font-weight: bold;
     border-radius: 0.5rem;
     border-color: #254653;
@@ -185,7 +258,6 @@ input {
 }
 
 #search-button {
-    font-size: 1rem;
     font-weight: bold;
     color: #254653;
     margin-left: 1rem;
@@ -205,7 +277,6 @@ input {
     max-height: 80vh;
     overflow-y: auto;
     list-style-type: none;
-    font-size: 1rem;
     padding-right: 40px;
 }
 
