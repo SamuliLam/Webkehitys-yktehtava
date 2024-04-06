@@ -24,6 +24,7 @@ async function loginUser() {
 
     if(response.status === 200){
         console.log('user successfully logged in');
+        window.location.href = '/index.html';
     } else {
         console.log('user not logged in');
     }

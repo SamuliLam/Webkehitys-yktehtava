@@ -17,52 +17,53 @@
     <title>Restaurant finder</title>
 </head>
 <body>
-<header>
-    <!-- Navigation bar goes here -->
-    <nav>
-        <ul id="nav-links">
+    <header>
+        <!-- Navigation bar goes here -->
+        <nav>
+            <ul id="nav-links">
+                <li><a href="/index.html">HOME</a></li>
+                <li><a href="/pages/map.html">MAP</a></li>
+                <li><a href="/pages/login.html">SIGN IN</a></li>
+                <li><a href="/pages/contact.html">CONTACT</a></li>
+            </ul>
+            <span id="hamburger-icon">&#9776</span>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Main content goes here -->
+        <div class="heading-box">
+            <h1>SIGN IN</h1>
+            <p>Sign in to access your profile</p>
+        </div>
+        <div class="login-container">
+            <form id="login-form">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Type your username" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Type your password" required>
+
+                <input type="submit" id="login-btn" value="Login">
+
+                <p>Don't have an account? </p>
+                <a href="/pages/register.html">SIGN UP</a>
+            </form>
+        </div>
+    </div>
+
+    <nav id="sidebar">
+        <span id="hamburger-icon-sidebar">&#9776</span>
+        <ul id="sidebar-links">
             <li><a href="/index.html">HOME</a></li>
             <li><a href="/pages/map.html">MAP</a></li>
             <li><a href="/pages/login.html">SIGN IN</a></li>
             <li><a href="/pages/contact.html">CONTACT</a></li>
         </ul>
-        <span id="hamburger-icon">&#9776</span>
     </nav>
-</header>
 
-<div class="container">
-    <!-- Main content goes here -->
-    <div class="heading-box">
-        <h1>SIGN IN</h1>
-        <p>Sign in to access your profile</p>
-    </div>
-    <div class="login-container">
-        <form id="login-form">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Type your username" required>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Type your password" required>
-
-            <input type="submit" id="login-btn" value="Login">
-
-            <p>Don't have an account? </p>
-            <a href="/pages/register.html">SIGN UP</a>
-        </form>
-</div>
-
-<nav id="sidebar">
-    <span id="hamburger-icon-sidebar">&#9776</span>
-    <ul id="sidebar-links">
-        <li><a href="/index.html">HOME</a></li>
-        <li><a href="/pages/map.html">MAP</a></li>
-        <li><a href="/pages/login.html">SIGN IN</a></li>
-        <li><a href="/pages/contact.html">CONTACT</a></li>
-    </ul>
-</nav>
-
-<footer>
-    <!-- Footer content goes here -->
-    <p>&copy; 2023 Restaurant Finder</p>
-</footer>
+    <footer>
+        <!-- Footer content goes here -->
+        <p>&copy; 2023 Restaurant Finder</p>
+    </footer>
 </body>
 </html>
