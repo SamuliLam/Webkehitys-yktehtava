@@ -253,11 +253,11 @@ h1  {
 .search-box {
     display: flex;
     justify-content: center;
+    gap: 1rem;
     margin-bottom: 4rem;
 }
 
 input {
-    font-weight: bold;
     border-radius: 0.5rem;
     border-color: #254653;
     padding: 0.4rem;
@@ -290,9 +290,7 @@ input {
 }
 
 button {
-    font-weight: bold;
     color: rgb(37, 70, 83);
-    margin-left: 1rem;
     cursor: pointer;
     border-radius: 0.5rem;
     border-color: rgb(37, 70, 83);
@@ -304,6 +302,7 @@ button {
 button:hover {
     background-color: #ffc270;
 }
+
 
 .info-box {
     max-height: 0;

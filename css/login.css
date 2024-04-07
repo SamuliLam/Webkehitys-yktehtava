@@ -1,0 +1,72 @@
+.container {
+    margin: 0 auto;
+}
+
+.login-container {
+    display: grid;
+    justify-content: center;
+    margin-bottom: 4rem;
+}
+
+#login-form, #signup-form {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+#login-form input, #signup-form input {
+    margin-bottom: 1rem;
+}
+
+#sign-in-btn {
+    margin-top: 1rem;
+}
+
+#username {
+    background-image: url("../assets/user.png");
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+    background-position: 0.6rem center;
+    padding-left: 2rem;
+}
+
+#password {
+    background-image: url("../assets/password.png");
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+    background-position: 0.6rem center;
+    padding-left: 2rem;
+}
+
+#email {
+    background-image: url("../assets/mail.png");
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+    background-position: 0.6rem center;
+    padding-left: 2rem;
+}
+
+#login-btn, #signup-btn {
+    margin-top: 1rem;
+}
+
+#login-form p, #signup-form p {
+    text-align: center;
+}
+
+#login-form a, #signup-form a {
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: #254653;
+}
+
+#login-form a:hover, #signup-form a:hover {
+    color: #F3A161;
+}
+
+#login-btn:hover, #signup-btn:hover {
+    background-color: #ffc270;
+    cursor: pointer;
+}
+
