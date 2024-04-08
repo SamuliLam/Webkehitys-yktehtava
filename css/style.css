@@ -46,7 +46,7 @@ header.sticky {
     }
 
     h1 {
-        font-size: 2.6rem;
+        font-size: 2.3rem;
     }
 
     .heading-box p {
@@ -77,19 +77,19 @@ header.sticky {
     }
 
     h1 {
-        font-size: 2.7rem;
+        font-size: 2.3rem;
     }
 
     .heading-box p {
-        font-size: 1.9rem;
+        font-size: 1.8rem;
     }
 
     input {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
     }
 
     button {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
     }
     #login-form, #signup-form {
         font-size: 0.81rem;
@@ -107,19 +107,19 @@ header.sticky {
     }
 
     h1 {
-        font-size: 2.8rem;
+        font-size: 2.3rem;
     }
 
     .heading-box p {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     input {
-        font-size: 1.3rem;
+        font-size: 1.17rem;
     }
 
     button {
-        font-size: 1.2rem;
+        font-size: 1.17rem;
     }
 
     #login-form, #signup-form {
@@ -178,19 +178,19 @@ header.sticky {
     }
 
     h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     .heading-box p {
-        font-size: 1.8rem;
+        font-size: 1.3rem;
     }
 
     input {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     button {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
     #login-form, #signup-form {
         font-size: 0.8rem;
@@ -247,7 +247,6 @@ h1  {
 .heading-box {
     text-align: center;
     margin-top: 4rem;
-    margin-bottom: 2rem;
 }
 
 .search-box {
