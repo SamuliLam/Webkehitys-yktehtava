@@ -31,13 +31,13 @@ async function updateCurrentUser(){
         },
         body: JSON.stringify(requestBody)
     });
-    const updatedUser = await response.json();
-    console.log(updatedUser);
+    const responseBody = await response.json();
+    console.log(responseBody);
     if(response.status === 200){
-        sessionStorage.setItem('username', username.value);
-        sessionStorage.setItem('email', email.value);
+        sessionStorage.setItem('username', responseBody.data.username);
+        sessionStorage.setItem('email', responseBody.data.email);
     } else {
-        console.error('Error updating user data');
+        console.error('Error updating user data: ', responseBody.message);
     }
 }
 
@@ -45,5 +45,5 @@ const profileForm = document.getElementById('profile-form');
 profileForm.addEventListener('submit', async function(event){
     event.preventDefault();
     await updateCurrentUser();
-    //location.reload();
+    location.reload();
 });
