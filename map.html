@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="js/main.js" type="module" defer></script>
+    <script src="js/main.js" defer></script>
     <script src="js/map.js" defer></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
@@ -28,8 +28,9 @@
         <ul id="nav-links">
             <li><a href="index.html">HOME</a></li>
             <li><a href="map.html">MAP</a></li>
-            <li><a href="login.html">SIGN IN</a></li>
+            <li><a href="login.html" id="sign-in-link">SIGN IN</a></li>
             <li><a href="contact.html">CONTACT</a></li>
+            <li><a href="index.html" id="sign-out-link">SIGN OUT</a></li>
         </ul>
         <span id="hamburger-icon">&#9776</span>
     </nav>
@@ -53,8 +54,9 @@
     <ul id="sidebar-links">
         <li><a href="index.html">HOME</a></li>
         <li><a href="map.html">MAP</a></li>
-        <li><a href="login.html">SIGN IN</a></li>
+        <li><a href="login.html" id="sign-in-link-sidebar">SIGN IN</a></li>
         <li><a href="contact.html">CONTACT</a></li>
+        <li><a href="index.html" id="sign-out-link-sidebar">SIGN OUT</a></li>
     </ul>
 </nav>
 

@@ -1,46 +1,51 @@
-'use strict';
-import * as utils from './utils.js';
-import * as eventHandlers from './eventHandlers.js';
+window.addEventListener('DOMContentLoaded', () => {
+    const signInLinks = [
+        document.getElementById('sign-in-link'),
+        document.getElementById('sign-in-link-sidebar')
+    ];
 
-eventHandlers.attachMainEventListeners();
-
-const restaurantList = document.getElementById('restaurant-list');
-
-async function displayRestaurants() {
-    try {
-        const restaurants = await utils.fetchRestaurantData();
-
-        restaurants.forEach(restaurant => {
-
-            // Create HTML elements
-            const restaurantListRow = utils.restaurantRow();
-            const restaurantContainer = utils.restaurantContainer();
-            const restaurantName = utils.restaurantName(restaurant);
-            const restaurantAddress = utils.restaurantAddress(restaurant);
-            const favoriteIcon = utils.favoriteIcon();
-            const infoBox = utils.infoBox();
-            const dailyMenuButton = utils.dailyMenuButton();
-            const weeklyMenuButton = utils.weeklyMenuButton();
-            const menuContent = utils.menuContent();
-
-            eventHandlers.attachListEventListeners(restaurantListRow, restaurantContainer, favoriteIcon, infoBox);
-
-            // Append elements to the DOM
-            restaurantContainer.appendChild(restaurantName);
-            restaurantContainer.appendChild(restaurantAddress);
-            restaurantContainer.appendChild(favoriteIcon);
-            infoBox.appendChild(dailyMenuButton);
-            infoBox.appendChild(weeklyMenuButton);
-            infoBox.appendChild(menuContent);
-            restaurantListRow.appendChild(restaurantContainer);
-            restaurantListRow.appendChild(infoBox);
-            restaurantList.appendChild(restaurantListRow);
+    const token = sessionStorage.getItem('token');
+    if (token) {
+        signInLinks.forEach(signInLink => {
+            signInLink.textContent = 'PROFILE';
+            signInLink.href = 'profile.html';
         });
-
-    } catch (error) {
-        console.error('Error displaying restaurant data', error);
-        document.getElementById('slogan').textContent = 'Error fetching restaurant data';
+        const signOutLinks = [
+            document.getElementById('sign-out-link'),
+            document.getElementById('sign-out-link-sidebar')
+        ];
+        signOutLinks.forEach(signOutLink => {
+            signOutLink.style.display = 'block';
+            signOutLink.addEventListener('click', () => {
+                sessionStorage.clear();
+                signInLinks.forEach(signInLink => {
+                    signInLink.textContent = 'SIGN IN';
+                    signInLink.href = 'login.html';
+                });
+                signOutLinks.forEach(signOutLink => {
+                    signOutLink.style.display = 'none';
+                });
+            });
+        });
     }
-}
+    const username = document.getElementById('profile-username');
+    const email = document.getElementById('profile-email');
+    if (username && email) {
+        username.value = sessionStorage.getItem('username');
+        email.value = sessionStorage.getItem('email');
+    }
+});
 
-displayRestaurants();
+window.addEventListener('scroll', function () {
+    const header = document.querySelector('header');
+    header.classList.toggle('sticky', window.scrollY > 0);
+});
+
+document.getElementById('hamburger-icon').addEventListener('click', function () {
+    document.getElementById('sidebar').classList.toggle('show');
+});
+
+document.getElementById('hamburger-icon-sidebar').addEventListener('click', function () {
+    document.getElementById('sidebar').classList.toggle('show');
+});
+

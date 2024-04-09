@@ -5,6 +5,7 @@ loginForm.addEventListener('submit', async function (event) {
     await loginUser();
 });
 
+
 async function loginUser() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
@@ -19,14 +20,17 @@ async function loginUser() {
             password: password
         })
     });
-    const data = await response.json();
-    console.log(data.message);
+    const user = await response.json();
+    console.log(user.message);
 
     if(response.status === 200){
         console.log('user successfully logged in');
-        window.location.href = '/index.html';
+        sessionStorage.setItem('token', user.token);
+        sessionStorage.setItem('username', user.data.username);
+        sessionStorage.setItem('email', user.data.email);
+        window.location.href = 'index.html';
     } else {
         console.log('user not logged in');
     }
-
 }
+

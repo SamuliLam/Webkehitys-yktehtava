@@ -344,6 +344,11 @@ button:hover {
     transform: rotate(180deg);
 }
 
+#sign-out-link, #sidebar #sign-out-link-sidebar {
+    display: none;
+}
+
+
 footer {
     text-align: center;
     flex-shrink: 1;

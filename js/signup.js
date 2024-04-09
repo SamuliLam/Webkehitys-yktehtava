@@ -1,12 +1,13 @@
 
 const signupForm = document.getElementById('signup-form');
-signupForm.addEventListener('submit', async function(event){
-    event.preventDefault();
-    await createUser();
-});
+if (signupForm) {
+    signupForm.addEventListener('submit', async function(event){
+        event.preventDefault();
+        await createUser();
+    });
+}
 
-async function getUsernameAvailability(){
-    const username = document.getElementById('username').value;
+export async function getUsernameAvailability(username){
     const response = await fetch(`https://10.120.32.94/restaurant/api/v1/users/available/${username}`);
     const data = await response.json();
     console.log(data)
@@ -22,7 +23,7 @@ async function createUser(){
     const email = document.getElementById('email').value;
 
     try {
-        const availability = await getUsernameAvailability();
+        const availability = await getUsernameAvailability(username);
         if (!availability.available) {
             console.log('Username is already taken');
             return;
