@@ -24,7 +24,7 @@ async function updateCurrentUser(){
         requestBody.password = password.value;
     }
 
-    const response = await fetch('https://10.120.32.94/restaurant//api/v1/users', {
+    const response = await fetch('https://10.120.32.94/restaurant/api/v1/users', {
         method: 'PUT',
         headers: {
             Authorization: `Bearer ${sessionStorage.getItem('token')}`,
