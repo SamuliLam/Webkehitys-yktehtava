@@ -39,6 +39,7 @@ async function displayRestaurants() {
         console.error('Error displaying restaurant data', error);
         document.getElementById('slogan').textContent = 'Error fetching restaurant data';
     }
+
 }
 
 displayRestaurants();

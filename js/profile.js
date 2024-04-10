@@ -1,6 +1,6 @@
-import { getUsernameAvailability } from "./signup.js";
+import {getUsernameAvailability} from "./signup.js";
 
-async function updateCurrentUser(){
+async function updateCurrentUser() {
 
     const username = document.getElementById('profile-username');
     const email = document.getElementById('profile-email');
@@ -8,7 +8,7 @@ async function updateCurrentUser(){
 
     let requestBody = {};
 
-    if (username.value) {
+    if (username.value && username.value !== sessionStorage.getItem('username')) {
         requestBody.username = username.value;
         const availability = await getUsernameAvailability(username.value);
         if (!availability.available) {
@@ -17,7 +17,7 @@ async function updateCurrentUser(){
             return;
         }
     }
-    if (email.value) {
+    if (email.value && email.value !== sessionStorage.getItem('email')) {
         requestBody.email = email.value;
     }
     if (password.value) {
@@ -27,13 +27,14 @@ async function updateCurrentUser(){
     const response = await fetch('https://10.120.32.94/restaurant/api/v1/users', {
         method: 'PUT',
         headers: {
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${sessionStorage.getItem('token')}`,
         },
         body: JSON.stringify(requestBody)
     });
     const responseBody = await response.json();
     console.log(responseBody);
-    if(response.status === 200){
+    if (response.status === 200) {
         sessionStorage.setItem('username', responseBody.data.username);
         sessionStorage.setItem('email', responseBody.data.email);
     } else {
@@ -42,8 +43,8 @@ async function updateCurrentUser(){
 }
 
 const profileForm = document.getElementById('profile-form');
-profileForm.addEventListener('submit', async function(event){
+profileForm.addEventListener('submit', async function (event) {
     event.preventDefault();
     await updateCurrentUser();
-    location.reload();
+    //location.reload();
 });

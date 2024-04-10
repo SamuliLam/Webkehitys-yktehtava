@@ -50,6 +50,9 @@ async function createUser(){
 
     if(response.status === 200){
         console.log('user successfully created!')
+        sessionStorage.setItem('token', data.token);
+        sessionStorage.setItem('username', data.data.username);
+        sessionStorage.setItem('email', data.data.email);
         window.location.href = 'index.html';
     }
 }

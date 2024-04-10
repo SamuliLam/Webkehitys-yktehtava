@@ -337,11 +337,14 @@ button:hover {
 }
 
 .triangle {
+    transform: rotate(-90deg);
+    display: inline-block;
+    transition: transform 0.3s ease-out;
     margin-left: 5px;
 }
 
 .rotated {
-    transform: rotate(180deg);
+    transform: rotate(0deg);
 }
 
 #sign-out-link, #sidebar #sign-out-link-sidebar {
