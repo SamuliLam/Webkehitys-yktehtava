@@ -24,7 +24,6 @@ async function displayRestaurants() {
 
             eventHandlers.attachListEventListeners(restaurantContainer, favoriteIcon, infoBox);
 
-
             // Append elements to the DOM
             restaurantContainer.appendChild(restaurantName);
             restaurantContainer.appendChild(restaurantAddress);
@@ -37,15 +36,35 @@ async function displayRestaurants() {
             restaurantList.appendChild(restaurantListRow);
 
             dailyMenuButton.addEventListener('click', async () => {
+                // Clear any existing menus
+                const existingMenus = infoBox.querySelectorAll('.menu-table');
+                existingMenus.forEach(menu => menu.remove());
+
+                // Check if the daily menu has already been added
+                if (infoBox.querySelector('.daily-menu-table')) {
+                    return;
+                }
+
                 const dailyMenuData = await utils.fetchDailyMenu(restaurant._id);
-                const dailyMenuTable = utils.createMenuTable(dailyMenuData.courses);
+                const dailyMenuTable = utils.createMenuTable(dailyMenuData.courses, 'daily');
                 infoBox.appendChild(dailyMenuTable);
             });
 
             weeklyMenuButton.addEventListener('click', async () => {
+                // Clear any existing menus
+                const existingMenus = infoBox.querySelectorAll('.menu-table');
+                existingMenus.forEach(menu => menu.remove());
+
+                // Check if the weekly menu has already been added
+                if (infoBox.querySelector('.weekly-menu-table')) {
+                    return;
+                }
+
                 const weeklyMenuData = await utils.fetchWeeklyMenu(restaurant._id);
-                const weeklyMenuTable = utils.createMenuTable(weeklyMenuData.courses);
-                infoBox.appendChild(weeklyMenuTable);
+                weeklyMenuData.days.forEach(day => {
+                    const weeklyMenuTable = utils.createMenuTable(day.courses, 'weekly');
+                    infoBox.appendChild(weeklyMenuTable);
+                });
             });
         }
 

@@ -309,13 +309,13 @@ button:hover {
     transition: max-height 0.3s ease-out;
     display: flex;
     justify-content: left;
-    margin-top: 1rem;
+    flex-direction: column;
+    overflow-y: scroll;
+    background-color: antiquewhite;
 }
 
 .show-info {
-    display: flex;
-    flex-direction: column;
-    max-height: 600px;
+    max-height: 500px;
 }
 
 .info-box button {
@@ -356,13 +356,30 @@ button:hover {
     display: flex;
     justify-content: left;
     gap: 1rem;
-    margin-bottom: 1rem;
+    padding: 1rem 0;
 }
 
 .menu-table {
     padding: 0.5rem;
     font-size: 16px;
 }
+
+.menu-table th {
+    background-color: #254653; /* Change to your preferred color */
+    color: #FFF8F2; /* Change to your preferred color */
+    font-weight: bold;
+    padding: 10px;
+}
+
+.menu-table td:nth-child(1) {
+    width: 70%;
+}
+
+.menu-table td:nth-child(2),
+.menu-table td:nth-child(3) {
+    width: 15%;
+}
+
 footer {
     text-align: center;
     flex-shrink: 1;

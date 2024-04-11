@@ -9,4 +9,11 @@ export function attachListEventListeners(restaurantContainer, favoriteIcon, info
         this.classList.toggle('highlight');
     });
 
+    infoBox.addEventListener('transitionend', function () {
+        if (!infoBox.classList.contains('show-info')) {
+            const menus = infoBox.querySelectorAll('table');
+            menus.forEach(menu => menu.remove());
+        }
+    });
+
 }
