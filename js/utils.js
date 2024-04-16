@@ -82,6 +82,34 @@ export const infoBox = () => {
     return infoBox;
 }
 
+export const CreateRestaurantInfo = (restaurant) => {
+    const restaurantInfo = document.createElement('div');
+    restaurantInfo.className = 'restaurant-info';
+
+    const infoList = document.createElement('ul');
+    restaurantInfo.appendChild(infoList);
+
+    const address = document.createElement('li');
+    const city = document.createElement('li');
+    const company = document.createElement('li');
+    const phone = document.createElement('li');
+    const postalCode = document.createElement('li');
+
+    address.textContent = 'Address: ' + restaurant.address;
+    city.textContent = 'City: ' + restaurant.city;
+    company.textContent = 'Company: ' + restaurant.company;
+    phone.textContent = 'Phone: ' + restaurant.phone;
+    postalCode.textContent = 'Postal code:' + restaurant.postalCode;
+
+    infoList.appendChild(address);
+    infoList.appendChild(city);
+    infoList.appendChild(company);
+    infoList.appendChild(phone);
+    infoList.appendChild(postalCode);
+
+    return restaurantInfo;
+}
+
 export const buttonsContainer = () => {
     const buttonsContainer = document.createElement('div');
     buttonsContainer.classList.add('buttons-container');
@@ -100,11 +128,18 @@ export const weeklyMenuButton = () => {
     return weeklyMenuButton;
 }
 
-export function createMenuTable(courses, menuType) {
+export const viewOnMapButton = () => {
+    const viewOnMapButton = document.createElement('button');
+    viewOnMapButton.textContent = 'View on map';
+    return viewOnMapButton;
+
+}
+
+export function createMenuTable(courses, menuType, date) {
     let table;
     // Check if courses is an array of objects (daily menu)
     if (Array.isArray(courses) && typeof courses[0] === 'object' && !Array.isArray(courses[0])) {
-        table = createDayTable(courses);
+        table = createDayTable(courses, date);
         table.classList.add(`${menuType}-menu-table`); // Add class depending on menu type
         return table;
     } else if (Array.isArray(courses) && Array.isArray(courses[0])) {
@@ -114,7 +149,7 @@ export function createMenuTable(courses, menuType) {
 
         // Iterate over each day
         courses.forEach(day => {
-            const dayTable = createDayTable(day.courses);
+            const dayTable = createDayTable(day.courses, day.date);
             dayTable.classList.add(`${menuType}-menu-table`); // Add class depending on menu type
             menuContainer.appendChild(dayTable);
         });
@@ -123,14 +158,14 @@ export function createMenuTable(courses, menuType) {
     }
 }
 
-function createDayTable(courses) {
+function createDayTable(courses, date) {
     const table = document.createElement('table');
     table.className = 'menu-table';
     const thead = document.createElement('thead');
     const tbody = document.createElement('tbody');
     const tr = document.createElement('tr');
 
-    const headers = ['Name', 'Price', 'Diets'];
+    const headers = [date, 'Price', 'Diets'];
 
     headers.forEach(header => {
         const th = document.createElement('th');

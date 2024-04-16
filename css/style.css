@@ -1,10 +1,9 @@
-html {
+html, body, .container {
     height: 100%;
 }
 
 body {
     margin: 0;
-    min-height: 100%;
     font-size: 16px;
     font-family: "Open Sans", sans-serif;
     background-color: #FFF8F2;
@@ -18,13 +17,11 @@ body {
     flex-direction: column;
     width: 100%;
     margin: 0 auto;
-    flex-shrink: 0;
     flex-grow: 1;
 }
 
 header {
     flex-shrink: 1;
-    flex-grow: 0;
     position: fixed;
     top: 0;
     left: 0;
@@ -38,7 +35,7 @@ header.sticky {
 
 @media screen and (min-width: 768px) {
     .container {
-        width: 750px;
+        max-width: 750px;
     }
 
     #restaurant-list {
@@ -68,7 +65,7 @@ header.sticky {
 
 @media screen and (min-width: 992px) {
     .container {
-        width: 970px;
+        max-width: 970px;
     }
 
     #restaurant-list {
@@ -99,7 +96,7 @@ header.sticky {
 
 @media screen and (min-width: 1200px) {
     .container {
-        width: 1170px;
+        max-width: 1170px;
     }
 
     #restaurant-list {
@@ -318,10 +315,6 @@ button:hover {
     max-height: 500px;
 }
 
-.info-box button {
-    margin: 0.5rem;
-}
-
 .highlight {
     background-color: #F3A161;
 }
@@ -356,7 +349,8 @@ button:hover {
     display: flex;
     justify-content: left;
     gap: 1rem;
-    padding: 1rem 0;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
 }
 
 .menu-table {
@@ -380,8 +374,16 @@ button:hover {
     width: 15%;
 }
 
+.restaurant-info {
+    padding: 1rem;
+}
+
+.restaurant-info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
 footer {
     text-align: center;
     flex-shrink: 1;
-    flex-grow: 0;
 }

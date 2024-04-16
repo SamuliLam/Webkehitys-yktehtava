@@ -1,15 +1,30 @@
 'use strict';
 import * as utils from './utils.js';
 import * as eventHandlers from './eventHandlers.js';
+import { customIcon } from './map.js';
 
 
 const restaurantList = document.getElementById('restaurant-list');
 
-async function displayRestaurants() {
-    try {
-        const restaurants = await utils.fetchRestaurantData();
+const searchField = document.getElementById('search-field');
 
-        for (const restaurant of restaurants) {
+searchField.addEventListener('keyup', (event) => {
+    const searchString = event.target.value.toLowerCase();
+    displayRestaurants(searchString);
+});
+
+export let markers = {};
+
+export async function displayRestaurants(filteredRestaurants = null, searchString = '') {
+    try {
+        if (!filteredRestaurants) {
+            filteredRestaurants = await utils.fetchRestaurantData();
+        }
+
+        const filteredRestaurantsBySearch = filterRestaurantsBySearch(filteredRestaurants, searchString);
+        restaurantList.innerHTML = '';
+
+        for (const restaurant of filteredRestaurantsBySearch) {
 
             // Create HTML elements
             const restaurantListRow = utils.restaurantRow();
@@ -18,8 +33,10 @@ async function displayRestaurants() {
             const restaurantAddress = utils.restaurantAddress(restaurant);
             const favoriteIcon = utils.favoriteIcon();
             const infoBox = utils.infoBox();
+            const restaurantInfo = utils.CreateRestaurantInfo(restaurant);
             const dailyMenuButton = utils.dailyMenuButton();
             const weeklyMenuButton = utils.weeklyMenuButton();
+            const viewOnMapButton = utils.viewOnMapButton();
             const buttonsContainer = utils.buttonsContainer();
 
             eventHandlers.attachListEventListeners(restaurantContainer, favoriteIcon, infoBox);
@@ -28,9 +45,11 @@ async function displayRestaurants() {
             restaurantContainer.appendChild(restaurantName);
             restaurantContainer.appendChild(restaurantAddress);
             restaurantContainer.appendChild(favoriteIcon);
+            infoBox.appendChild(restaurantInfo);
             infoBox.appendChild(buttonsContainer);
             buttonsContainer.appendChild(dailyMenuButton);
             buttonsContainer.appendChild(weeklyMenuButton);
+            buttonsContainer.appendChild(viewOnMapButton);
             restaurantListRow.appendChild(restaurantContainer);
             restaurantListRow.appendChild(infoBox);
             restaurantList.appendChild(restaurantListRow);
@@ -46,7 +65,11 @@ async function displayRestaurants() {
                 }
 
                 const dailyMenuData = await utils.fetchDailyMenu(restaurant._id);
-                const dailyMenuTable = utils.createMenuTable(dailyMenuData.courses, 'daily');
+
+                // Use the date from the daily menu data if available, otherwise use the current date
+                const date = dailyMenuData.date || new Date().toLocaleDateString('fi-FI', { weekday: 'long', day: 'numeric', month: 'long' });
+
+                const dailyMenuTable = utils.createMenuTable(dailyMenuData.courses, 'daily', date);
                 infoBox.appendChild(dailyMenuTable);
             });
 
@@ -62,9 +85,18 @@ async function displayRestaurants() {
 
                 const weeklyMenuData = await utils.fetchWeeklyMenu(restaurant._id);
                 weeklyMenuData.days.forEach(day => {
-                    const weeklyMenuTable = utils.createMenuTable(day.courses, 'weekly');
+                    const weeklyMenuTable = utils.createMenuTable(day.courses, 'weekly', day.date);
                     infoBox.appendChild(weeklyMenuTable);
                 });
+            });
+
+            const coords = [restaurant.location.coordinates[1], restaurant.location.coordinates[0]];
+            let marker = L.marker(coords, {icon: customIcon}).addTo(map);
+            marker.bindPopup(restaurant.name + '<br>' + restaurant.address);
+            markers[restaurant._id] = marker; // store the marker in the markers object
+
+            viewOnMapButton.addEventListener('click', () => {
+                window.location.href = `map.html?restaurant=${restaurant._id}`;
             });
         }
 
@@ -72,6 +104,17 @@ async function displayRestaurants() {
         console.error('Error displaying restaurant data', error);
         document.getElementById('slogan').textContent = 'Error fetching restaurant data';
     }
+
+}
+
+
+function filterRestaurantsBySearch(restaurants, searchString){
+    if (!searchString){
+        return restaurants;
+    }
+    return restaurants.filter(restaurant => {
+        return restaurant.name.toLowerCase().includes(searchString);
+    });
 
 }
 
