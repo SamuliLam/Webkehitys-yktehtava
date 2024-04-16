@@ -99,7 +99,7 @@ export const CreateRestaurantInfo = (restaurant) => {
     city.textContent = 'City: ' + restaurant.city;
     company.textContent = 'Company: ' + restaurant.company;
     phone.textContent = 'Phone: ' + restaurant.phone;
-    postalCode.textContent = 'Postal code:' + restaurant.postalCode;
+    postalCode.textContent = 'Postal code: ' + restaurant.postalCode;
 
     infoList.appendChild(address);
     infoList.appendChild(city);
