@@ -131,6 +131,7 @@ export const weeklyMenuButton = () => {
 export const viewOnMapButton = () => {
     const viewOnMapButton = document.createElement('button');
     viewOnMapButton.textContent = 'View on map';
+    viewOnMapButton.id = 'view-on-map-button';
     return viewOnMapButton;
 
 }

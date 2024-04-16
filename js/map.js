@@ -27,3 +27,15 @@ for (const restaurant of restaurants) {
     marker.bindPopup(restaurant.name + '<br>' + restaurant.address);
 }
 
+// Get the restaurant ID from the URL
+const urlParams = new URLSearchParams(window.location.search);
+const restaurantId = urlParams.get('restaurant');
+
+// Find the corresponding restaurant
+const restaurant = restaurants.find(r => r._id === restaurantId);
+
+if (restaurant) {
+    // Set the map view to the restaurant's marker
+    const coords = [restaurant.location.coordinates[1], restaurant.location.coordinates[0]];
+    map.setView(coords, 13);
+}

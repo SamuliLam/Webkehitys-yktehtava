@@ -3,25 +3,31 @@ import * as utils from './utils.js';
 import * as eventHandlers from "./eventHandlers.js";
 
 const restaurantList = document.getElementById('restaurant-list');
-
 const searchField = document.getElementById('search-field');
+
+let restaurants = null;
+
+window.onload = async () => {
+    restaurants = await utils.fetchRestaurantData();
+    await displayRestaurants(restaurants);
+}
 
 searchField.addEventListener('keyup', (event) => {
     const searchString = event.target.value.toLowerCase();
-    displayRestaurants(searchString);
+    const filteredRestaurants = filterRestaurantsBySearch(restaurants, searchString);
+    displayRestaurants(filteredRestaurants, searchString);
 });
 
 export async function displayRestaurants(filteredRestaurants = null, searchString = '') {
     try {
-        if (!filteredRestaurants) {
-            filteredRestaurants = await utils.fetchRestaurantData();
-        }
 
+        if (!filteredRestaurants) {
+            filteredRestaurants = restaurants;
+        }
         const filteredRestaurantsBySearch = filterRestaurantsBySearch(filteredRestaurants, searchString);
         restaurantList.innerHTML = '';
 
         for (const restaurant of filteredRestaurantsBySearch) {
-
             // Create HTML elements
             const restaurantListRow = utils.restaurantRow();
             const restaurantContainer = utils.restaurantContainer();
@@ -86,6 +92,9 @@ export async function displayRestaurants(filteredRestaurants = null, searchStrin
                 });
             });
 
+            viewOnMapButton.addEventListener('click', () => {
+                window.location.href = `map.html?restaurant=${restaurant._id}`;
+            });
         }
 
     } catch (error) {
@@ -102,7 +111,4 @@ function filterRestaurantsBySearch(restaurants, searchString){
     return restaurants.filter(restaurant => {
         return restaurant.name.toLowerCase().includes(searchString);
     });
-
 }
-
-displayRestaurants();
