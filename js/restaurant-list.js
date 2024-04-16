@@ -1,8 +1,6 @@
 'use strict';
 import * as utils from './utils.js';
-import * as eventHandlers from './eventHandlers.js';
-import { customIcon } from './map.js';
-
+import * as eventHandlers from "./eventHandlers.js";
 
 const restaurantList = document.getElementById('restaurant-list');
 
@@ -12,8 +10,6 @@ searchField.addEventListener('keyup', (event) => {
     const searchString = event.target.value.toLowerCase();
     displayRestaurants(searchString);
 });
-
-export let markers = {};
 
 export async function displayRestaurants(filteredRestaurants = null, searchString = '') {
     try {
@@ -90,14 +86,6 @@ export async function displayRestaurants(filteredRestaurants = null, searchStrin
                 });
             });
 
-            const coords = [restaurant.location.coordinates[1], restaurant.location.coordinates[0]];
-            let marker = L.marker(coords, {icon: customIcon}).addTo(map);
-            marker.bindPopup(restaurant.name + '<br>' + restaurant.address);
-            markers[restaurant._id] = marker; // store the marker in the markers object
-
-            viewOnMapButton.addEventListener('click', () => {
-                window.location.href = `map.html?restaurant=${restaurant._id}`;
-            });
         }
 
     } catch (error) {
@@ -106,7 +94,6 @@ export async function displayRestaurants(filteredRestaurants = null, searchStrin
     }
 
 }
-
 
 function filterRestaurantsBySearch(restaurants, searchString){
     if (!searchString){
