@@ -42,9 +42,10 @@ async function updateCurrentUser() {
     }
 }
 
+
 const profileForm = document.getElementById('profile-form');
 profileForm.addEventListener('submit', async function (event) {
     event.preventDefault();
     await updateCurrentUser();
-    //location.reload();
+    location.reload();
 });

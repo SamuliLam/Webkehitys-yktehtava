@@ -28,6 +28,8 @@ async function loginUser() {
         sessionStorage.setItem('token', user.token);
         sessionStorage.setItem('username', user.data.username);
         sessionStorage.setItem('email', user.data.email);
+        sessionStorage.setItem('favouriteRestaurant', user.data.favouriteRestaurant);
+
         window.location.href = 'index.html';
     } else {
         console.log('user not logged in');

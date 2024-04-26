@@ -1,7 +1,17 @@
-export function attachListEventListeners(restaurantContainer, favoriteIcon, infoBox) {
+import { updateFavoriteRestaurant } from "./fetchCalls.js";
+
+let currentFavoritedIcon = null;
+export function attachListEventListeners(restaurantContainer, favoriteIcon, infoBox, restaurant) {
     favoriteIcon.addEventListener('click', function (event) {
         event.stopPropagation();
+        if (currentFavoritedIcon && currentFavoritedIcon !== this) {
+            currentFavoritedIcon.classList.remove('favorited');
+        }
         this.classList.toggle('favorited');
+        if (this.classList.contains('favorited')) {
+            currentFavoritedIcon = this;
+            updateFavoriteRestaurant(restaurant._id);
+        }
     });
 
     restaurantContainer.addEventListener('click', function () {

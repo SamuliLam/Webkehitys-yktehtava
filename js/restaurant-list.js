@@ -27,6 +27,9 @@ export async function displayRestaurants(filteredRestaurants = null, searchStrin
         const filteredRestaurantsBySearch = filterRestaurantsBySearch(filteredRestaurants, searchString);
         restaurantList.innerHTML = '';
 
+        const favoriteRestaurantId = sessionStorage.getItem('favouriteRestaurant');
+
+
         for (const restaurant of filteredRestaurantsBySearch) {
             // Create HTML elements
             const restaurantListRow = utils.restaurantRow();
@@ -41,7 +44,11 @@ export async function displayRestaurants(filteredRestaurants = null, searchStrin
             const viewOnMapButton = utils.viewOnMapButton();
             const buttonsContainer = utils.buttonsContainer();
 
-            eventHandlers.attachListEventListeners(restaurantContainer, favoriteIcon, infoBox);
+            if (restaurant._id === favoriteRestaurantId) {
+                favoriteIcon.classList.add('favorited'); // Add the 'favorited' class if the restaurant is the user's favorite
+            }
+
+            eventHandlers.attachListEventListeners(restaurantContainer, favoriteIcon, infoBox, restaurant);
 
             // Append elements to the DOM
             restaurantContainer.appendChild(restaurantName);
