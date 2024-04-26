@@ -19,7 +19,6 @@ const favoritesFilter = document.getElementById('favorite-filter');
 
 let restaurants = await utils.fetchRestaurantData();
 
-// Create a function that filters the restaurant data based on the filter type
 function filterRestaurants(data, filterType) {
     const favoriteRestaurantId = sessionStorage.getItem('favouriteRestaurant');
 
@@ -34,8 +33,6 @@ function filterRestaurants(data, filterType) {
             return data;
     }
 }
-
-// In the event listeners for the filter triangles, call the filter function with the stored restaurant data and the appropriate filter type
 
 let activeFilter = null;
 nameFilter.addEventListener('click', () => {
