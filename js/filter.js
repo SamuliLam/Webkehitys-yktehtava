@@ -25,13 +25,15 @@ let restaurants = await utils.fetchRestaurantData();
 
 // Create a function that filters the restaurant data based on the filter type
 function filterRestaurants(data, filterType) {
+    const favoriteRestaurantId = sessionStorage.getItem('favouriteRestaurant');
+
     switch (filterType) {
         case 'name':
             return [...data].sort((a, b) => a.name.localeCompare(b.name));
         case 'city':
             return [...data].sort((a, b) => a.city.localeCompare(b.city));
         case 'favorites':
-            return data.filter(restaurant => restaurant.isFavorite);
+            return data.filter(restaurant => restaurant._id === favoriteRestaurantId);
         default:
             return data;
     }
