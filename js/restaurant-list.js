@@ -45,7 +45,7 @@ export async function displayRestaurants(filteredRestaurants = null, searchStrin
             const buttonsContainer = utils.buttonsContainer();
 
             if (restaurant._id === favoriteRestaurantId) {
-                favoriteIcon.classList.add('favorited'); // Add the 'favorited' class if the restaurant is the user's favorite
+                favoriteIcon.classList.add('favorited');
             }
 
             eventHandlers.attachListEventListeners(restaurantContainer, favoriteIcon, infoBox, restaurant);
