@@ -31,6 +31,7 @@ export async function displayRestaurants(filteredRestaurants = null, searchStrin
 
 
         for (const restaurant of filteredRestaurantsBySearch) {
+
             // Create HTML elements
             const restaurantListRow = utils.restaurantRow();
             const restaurantContainer = utils.restaurantContainer();
