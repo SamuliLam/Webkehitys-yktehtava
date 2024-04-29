@@ -1,5 +1,5 @@
 import {getUsernameAvailability} from "./signup.js";
-import {updateProfilePicture} from "./fetchCalls.js";
+import {updateProfilePicture, getProfilePicture} from "./fetchCalls.js";
 
 async function updateCurrentUser() {
 
@@ -49,11 +49,12 @@ profileForm.addEventListener('submit', async function (event) {
     event.preventDefault();
     await updateCurrentUser();
     const fileInput = document.getElementById('avatar-input');
-    const avatarUrl = await updateProfilePicture(fileInput);
-    console.log(avatarUrl);
+    const data = await updateProfilePicture(fileInput);
+    console.log("updateprofilepic data: "+data);
+    const avatar = await getProfilePicture(data, sessionStorage.getItem('token'));
+    console.log("updateprofilepic avatar: "+avatar);
+    const avatarImg = document.getElementById('profile-img');
+    avatarImg.src = avatar;
 
-    if (avatarUrl) {
-        document.getElementById('profile-img').src = avatarUrl;
-    }
 });
 

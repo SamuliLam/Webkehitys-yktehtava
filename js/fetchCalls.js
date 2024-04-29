@@ -31,9 +31,29 @@ export async function updateProfilePicture(fileInput) {
     const responseBody = await response.json();
     console.log(responseBody);
     if (response.status === 200) {
-        console.log('Profile picture updated');
+        console.log('responsebody Avatar: ' + responseBody.data.avatar);
         return responseBody.data.avatar;
     } else {
         console.error('Error updating user data: ', responseBody.message);
     }
+}
+
+export async function getProfilePicture(data, token) {
+    const response = await fetch(
+        `https://10.120.32.94/restaurant/uploads/${data}`,
+        {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        }
+    );
+    if (!response.ok) {
+        console.error('Error fetching profile picture');
+        return;
+    }
+    const blob = await response.blob();
+    const avatarUrl = URL.createObjectURL(blob);
+    console.log('Profile picture URL: ', avatarUrl);
+    sessionStorage.setItem('avatar', avatarUrl);
+    return avatarUrl;
 }

@@ -29,7 +29,8 @@ async function loginUser() {
         sessionStorage.setItem('username', user.data.username);
         sessionStorage.setItem('email', user.data.email);
         sessionStorage.setItem('favouriteRestaurant', user.data.favouriteRestaurant);
-
+        const avatarUrl = `https://10.120.32.94/restaurant/uploads/${user.data.avatar}`;
+        sessionStorage.setItem('avatar', avatarUrl);
         window.location.href = 'index.html';
     } else {
         console.log('user not logged in');

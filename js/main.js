@@ -1,4 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
+
     const signInLinks = [
         document.getElementById('sign-in-link'),
         document.getElementById('sign-in-link-sidebar')
@@ -33,6 +34,12 @@ window.addEventListener('DOMContentLoaded', () => {
     if (username && email) {
         username.value = sessionStorage.getItem('username');
         email.value = sessionStorage.getItem('email');
+    }
+
+    const profileImg = document.getElementById('profile-img');
+    if (profileImg) {
+        const avatarUrl = sessionStorage.getItem('avatar');
+        profileImg.src = avatarUrl || 'assets/profile-picture.png';
     }
 });
 
