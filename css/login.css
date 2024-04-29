@@ -22,30 +22,6 @@
     margin-top: 1rem;
 }
 
-#username {
-    background-image: url("../assets/user.png");
-    background-repeat: no-repeat;
-    background-size: 1rem 1rem;
-    background-position: 0.6rem center;
-    padding-left: 2rem;
-}
-
-#password {
-    background-image: url("../assets/password.png");
-    background-repeat: no-repeat;
-    background-size: 1rem 1rem;
-    background-position: 0.6rem center;
-    padding-left: 2rem;
-}
-
-#email {
-    background-image: url("../assets/mail.png");
-    background-repeat: no-repeat;
-    background-size: 1rem 1rem;
-    background-position: 0.6rem center;
-    padding-left: 2rem;
-}
-
 #login-btn, #signup-btn {
     margin-top: 1rem;
 }

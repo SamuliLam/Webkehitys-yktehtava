@@ -5,6 +5,7 @@
     border-width: 2px;
     box-shadow: 5px 5px 10px 5px #ccc;
     padding: 2rem;
+    overflow: auto;
 }
 .profile-icon-box {
     display: flex;
@@ -26,6 +27,7 @@
     flex-direction: column;
     font-weight: bold;
     align-items: center;
+    flex-shrink: 1;
 }
 
 
@@ -40,23 +42,18 @@ img {
     width: 5rem;
 }
 
-#profile-form input[type="text"],
-#profile-form input[type="email"],
-#profile-form input[type="password"],
-.custom-file-upload {
-    border-radius: 0.5rem;
-    border-color: #254653;
-    padding: 0.4rem;
-    background-color: #F3A161;
-    color: #254653;
-    box-shadow: 2px 2px #254653; /* Set the width */
-}
 
 .custom-file-upload {
     width: 100%;
     text-align: center;
     display: inline-block;
     cursor: pointer;
+    border-radius: 0.5rem;
+    border-color: #254653;
+    padding: 0.4rem;
+    background-color: #F3A161;
+    color: #254653;
+    box-shadow: 2px 2px #254653;
 }
 .custom-file-upload:hover {
     cursor: pointer;

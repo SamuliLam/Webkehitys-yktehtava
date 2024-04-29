@@ -55,6 +55,5 @@ profileForm.addEventListener('submit', async function (event) {
     console.log("updateprofilepic avatar: "+avatar);
     const avatarImg = document.getElementById('profile-img');
     avatarImg.src = avatar;
-
 });
 

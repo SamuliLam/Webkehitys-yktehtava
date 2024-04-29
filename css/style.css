@@ -4,6 +4,7 @@ html, body, .container {
 
 body {
     margin: 0;
+    height: 100vh;
     font-size: 16px;
     font-family: "Open Sans", sans-serif;
     background-color: #FFF8F2;
@@ -386,4 +387,28 @@ button:hover {
 footer {
     text-align: center;
     flex-shrink: 1;
+}
+
+.username-input {
+    background-image: url("../assets/user.png");
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+    background-position: 0.6rem center;
+    padding-left: 2rem;
+}
+
+.password-input {
+    background-image: url("../assets/password.png");
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+    background-position: 0.6rem center;
+    padding-left: 2rem;
+}
+
+.email-input {
+    background-image: url("../assets/mail.png");
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+    background-position: 0.6rem center;
+    padding-left: 2rem;
 }
