@@ -23,6 +23,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 1;
 }
 
 header.sticky {
@@ -439,27 +440,3 @@ footer {
     padding-left: 2rem;
 }
 
-
-@media screen and (max-height: 768px) {
-
-    h1 {
-        font-size: 30px;
-    }
-
-    .heading-box p {
-        font-size: 1.5rem;
-    }
-
-    input {
-        font-size: 0.9rem;
-    }
-
-    button {
-        font-size: 0.9rem;
-    }
-    #login-form, #signup-form {
-        font-size: 0.8rem;
-    }
-
-
-}
