@@ -193,6 +193,12 @@ header.sticky {
     #login-form, #signup-form {
         font-size: 0.8rem;
     }
+
+    .restaurant-name {
+        max-width: 100px;
+        word-wrap: break-word;
+    }
+
 }
 
 #sidebar {
@@ -268,7 +274,6 @@ input {
     overflow-y: auto;
     list-style-type: none;
     padding-right: 40px;
-    margin-bottom: 4rem;
 }
 
 .restaurant-header {
@@ -276,10 +281,14 @@ input {
     grid-template-columns: 1fr 1fr 0.05fr;
     gap: 1rem;
     padding: 0 1rem;
+    align-items: center;
 }
 
 .favorite-icon {
     cursor: pointer;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-size: 1.5rem;
 }
 
 .favorited {
@@ -352,6 +361,7 @@ button:hover {
     gap: 1rem;
     padding-left: 1rem;
     padding-bottom: 1rem;
+    padding-right: 1rem;
 }
 
 .menu-table {
