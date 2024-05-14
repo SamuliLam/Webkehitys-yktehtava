@@ -1,7 +1,0 @@
-.contact-container {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    flex-shrink: 1;
-    margin-top: 5rem;
-}
