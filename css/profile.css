@@ -37,28 +37,36 @@ img {
     border-radius: 50%;
 }
 
-#save-btn {
-    margin-top: 1rem;
-    width: 5rem;
+.avatar-save-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#update-profile-btn {
+    font-weight: bold;
 }
 
 
 .custom-file-upload {
-    width: 100%;
     text-align: center;
     display: inline-block;
     cursor: pointer;
     border-radius: 0.5rem;
-    border-color: #254653;
+    border: 2px solid #254653;
     padding: 0.4rem;
     background-color: #F3A161;
     color: #254653;
     box-shadow: 2px 2px #254653;
+    width: fit-content;
 }
 .custom-file-upload:hover {
     cursor: pointer;
     background-color: #ffc270;
 }
+
+.
 
 
 @media screen and (min-width: 992px) {

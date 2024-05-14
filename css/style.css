@@ -301,6 +301,10 @@ input {
     align-items: center;
 }
 
+.restaurant-header:hover {
+    background-color: #F3A161;
+}
+
 .favorite-icon {
     cursor: pointer;
     margin-top: 1em;
