@@ -14,21 +14,32 @@
 
 header {
     flex-shrink: 0;
-
 }
 
 .instruction-text {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
 }
 
 .search-box {
-    position: absolute; /* Positions the search box at a specified position */
-    top: 10px; /* Positions the search box 10px from the top */
-    left: 50px; /* Positions the search box 10px from the left */
+    position: absolute;
+    left: 50px;
     z-index: 2;
+    background-color: #FFF8F2;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    border: 2px solid;
+}
+
+.search-child-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .leaflet-popup-content-wrapper {
@@ -42,6 +53,26 @@ header {
     font-weight: bold;
 }
 
+#search-field, #search-button {
+    height: fit-content;
+}
+
 footer {
     flex-shrink: 0;
+}
+
+@media screen and (max-width: 555px) {
+    .search-box {
+        padding: 0.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .instruction-text {
+        font-size: 1rem;
+    }
+
+    .search-child-container {
+        gap: 0;
+    }
 }

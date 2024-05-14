@@ -12,31 +12,42 @@ navigator.geolocation.getCurrentPosition(position => {
 });
 
 
-// new Leaflet control for the search box
 let SearchControl = L.Control.extend({
     onAdd: function(map) {
-        // Create a new div element for the search box
         let searchBox = L.DomUtil.create('div', 'search-box');
 
-        // Create the search input field and button
         let searchInput = L.DomUtil.create('input', '', searchBox);
         searchInput.type = 'text';
         searchInput.id = 'search-field';
         searchInput.placeholder = 'Find a restaurant: ';
 
-        let searchButton = L.DomUtil.create('button', '', searchBox);
+        let container = L.DomUtil.create('div', '', searchBox);
+        container.className = 'search-child-container';
+
+        let searchButton = L.DomUtil.create('button', '', container);
         searchButton.id = 'search-button';
         searchButton.textContent = 'Search';
 
-        // Create the green icon and instruction text
-        let greenIcon = L.DomUtil.create('img', '', searchBox);
+        searchButton.addEventListener('click', function() {
+            console.log('Search button clicked');
+            // Get the search input value
+            let query = searchInput.value;
+
+            let restaurant = searchRestaurant(restaurants, query);
+
+            if (restaurant) {
+                const coords = [restaurant.location.coordinates[1], restaurant.location.coordinates[0]];
+                map.setView(coords, 13);
+            }
+        });
+
+        let greenIcon = L.DomUtil.create('img', '', container);
         greenIcon.src = 'assets/green-restaurant.png';
         greenIcon.style.height = '60px';
         greenIcon.style.marginLeft = '10px';
 
-
-        let instructionText = L.DomUtil.create('span', 'instruction-text', searchBox);
-        instructionText.textContent = 'Closest restaurant';
+        let instructionText = L.DomUtil.create('span', 'instruction-text', container);
+        instructionText.textContent = 'CLOSEST';
 
         return searchBox;
     }
@@ -74,29 +85,36 @@ for (const restaurant of restaurants) {
         minDistance = distance;
         closestRestaurant = restaurant;
     }
-    // Only add the marker if the restaurant is not the closest one
     if (restaurant !== closestRestaurant) {
         let marker = L.marker(coords, {icon: customIcon}).addTo(map);
         marker.bindPopup(restaurant.name + '<br>' + restaurant.address);
     }
 }
 
-// Add the marker for the closest restaurant separately
 if (closestRestaurant) {
     const coords = [closestRestaurant.location.coordinates[1], closestRestaurant.location.coordinates[0]];
     let marker = L.marker(coords, {icon: greenIcon}).addTo(map);
     marker.bindPopup(closestRestaurant.name + '<br>' + closestRestaurant.address);
 }
 
-// Get the restaurant ID from the URL
 const urlParams = new URLSearchParams(window.location.search);
 const restaurantId = urlParams.get('restaurant');
 
-// Find the corresponding restaurant
 const restaurant = restaurants.find(r => r._id === restaurantId);
 
 if (restaurant) {
-    // Set the map view to the restaurant's marker
     const coords = [restaurant.location.coordinates[1], restaurant.location.coordinates[0]];
     map.setView(coords, 13);
+}
+
+function searchRestaurant(restaurants, query) {
+    query = query.toLowerCase();
+
+    for (const restaurant of restaurants) {
+        if (restaurant.name.toLowerCase().includes(query)) {
+            return restaurant;
+        }
+    }
+
+    return null;
 }
