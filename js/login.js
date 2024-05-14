@@ -21,10 +21,8 @@ async function loginUser() {
         })
     });
     const user = await response.json();
-    console.log(user.message);
 
     if(response.status === 200){
-        console.log('user successfully logged in');
         sessionStorage.setItem('token', user.token);
         sessionStorage.setItem('username', user.data.username);
         sessionStorage.setItem('email', user.data.email);

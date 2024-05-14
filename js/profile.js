@@ -14,7 +14,6 @@ async function updateCurrentUser() {
         const availability = await getUsernameAvailability(username.value);
         if (!availability.available) {
             username.value = 'Username is already taken';
-            console.log('Username is already taken');
             return;
         }
     }
@@ -34,7 +33,6 @@ async function updateCurrentUser() {
         body: JSON.stringify(requestBody)
     });
     const responseBody = await response.json();
-    console.log(responseBody);
     if (response.status === 200) {
         sessionStorage.setItem('username', responseBody.data.username);
         sessionStorage.setItem('email', responseBody.data.email);
@@ -50,9 +48,7 @@ profileForm.addEventListener('submit', async function (event) {
     await updateCurrentUser();
     const fileInput = document.getElementById('avatar-input');
     const data = await updateProfilePicture(fileInput);
-    console.log("updateprofilepic data: "+data);
     const avatar = await getProfilePicture(data, sessionStorage.getItem('token'));
-    console.log("updateprofilepic avatar: "+avatar);
     const avatarImg = document.getElementById('profile-img');
     avatarImg.src = avatar;
 });

@@ -3,7 +3,6 @@ import { fetchRestaurantData } from './utils.js';
 
 var map = L.map('map')
 navigator.geolocation.getCurrentPosition(position => {
-    console.log(position.coords.latitude, position.coords.longitude);
     const coords = [position.coords.latitude, position.coords.longitude];
     map.setView(coords, 13);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -29,8 +28,6 @@ let SearchControl = L.Control.extend({
         searchButton.textContent = 'Search';
 
         searchButton.addEventListener('click', function() {
-            console.log('Search button clicked');
-            // Get the search input value
             let query = searchInput.value;
 
             let restaurant = searchRestaurant(restaurants, query);

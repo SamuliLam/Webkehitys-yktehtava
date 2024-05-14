@@ -55,10 +55,8 @@ cityFilter.addEventListener('click', () => {
         const filteredRestaurants = filterRestaurants(restaurants, 'city');
         displayRestaurants(filteredRestaurants);
     }
-    console.log(activeFilter);
 });
 
-// Enable the favorites filter only if the user is logged in
 if (sessionStorage.getItem('token')){
     favoritesFilter.addEventListener('click', () => {
         if (activeFilter === 'favorites') {

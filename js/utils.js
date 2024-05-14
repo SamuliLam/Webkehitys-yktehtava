@@ -4,7 +4,6 @@ export async function fetchRestaurantData() {
     try {
         const response = await fetch('https://10.120.32.94/restaurant/api/v1/restaurants');
         const restaurants = await response.json();
-        console.log(restaurants);
         return restaurants;
     } catch (error) {
         console.error('Error fetching restaurant data', error);
@@ -16,7 +15,6 @@ export async function fetchDailyMenu(id, lang = 'fi') {
         const url = `https://10.120.32.94/restaurant/api/v1/restaurants/daily/${id}/${lang}`;
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data);
 
         if (response.status === 200) {
             return data;
@@ -31,7 +29,6 @@ export async function fetchWeeklyMenu(id, lang = 'fi') {
         const url = `https://10.120.32.94/restaurant/api/v1/restaurants/weekly/${id}/${lang}`;
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data);
 
         if (response.status === 200) {
             return data;
@@ -138,20 +135,19 @@ export const viewOnMapButton = () => {
 
 export function createMenuTable(courses, menuType, date) {
     let table;
-    // Check if courses is an array of objects (daily menu)
     if (Array.isArray(courses) && typeof courses[0] === 'object' && !Array.isArray(courses[0])) {
         table = createDayTable(courses, date);
-        table.classList.add(`${menuType}-menu-table`); // Add class depending on menu type
+        table.classList.add(`${menuType}-menu-table`);
         return table;
     } else if (Array.isArray(courses) && Array.isArray(courses[0])) {
-        // If courses is an array of arrays (weekly menu), create a container for the tables
+
         const menuContainer = document.createElement('div');
         menuContainer.className = 'menu-container';
 
         // Iterate over each day
         courses.forEach(day => {
             const dayTable = createDayTable(day.courses, day.date);
-            dayTable.classList.add(`${menuType}-menu-table`); // Add class depending on menu type
+            dayTable.classList.add(`${menuType}-menu-table`);
             menuContainer.appendChild(dayTable);
         });
 

@@ -8,9 +8,7 @@ export async function updateFavoriteRestaurant(restaurantId) {
         body: JSON.stringify({favouriteRestaurant: restaurantId})
     });
     const responseBody = await response.json();
-    console.log(responseBody);
     if (response.status === 200) {
-        console.log('Favourite restaurant updated');
         sessionStorage.setItem('favouriteRestaurant', responseBody.data.favouriteRestaurant);
     } else {
         console.error('Error updating user data: ', responseBody.message);
@@ -29,9 +27,7 @@ export async function updateProfilePicture(fileInput) {
         body: formData
     });
     const responseBody = await response.json();
-    console.log(responseBody);
     if (response.status === 200) {
-        console.log('responsebody Avatar: ' + responseBody.data.avatar);
         return responseBody.data.avatar;
     } else {
         console.error('Error updating user data: ', responseBody.message);
@@ -53,7 +49,6 @@ export async function getProfilePicture(data, token) {
     }
     const blob = await response.blob();
     const avatarUrl = URL.createObjectURL(blob);
-    console.log('Profile picture URL: ', avatarUrl);
     sessionStorage.setItem('avatar', avatarUrl);
     return avatarUrl;
 }

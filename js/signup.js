@@ -10,8 +10,6 @@ if (signupForm) {
 export async function getUsernameAvailability(username){
     const response = await fetch(`https://10.120.32.94/restaurant/api/v1/users/available/${username}`);
     const data = await response.json();
-    console.log(data)
-    console.log(data.message);
     if(response.status === 200){
         return data;
     }
@@ -25,7 +23,6 @@ async function createUser(){
     try {
         const availability = await getUsernameAvailability(username);
         if (!availability.available) {
-            console.log('Username is already taken');
             return;
         }
     } catch (error) {
@@ -45,11 +42,9 @@ async function createUser(){
         })
     });
     const data = await response.json();
-    console.log(data.message)
 
 
     if(response.status === 200){
-        console.log('user successfully created!')
         sessionStorage.setItem('token', data.token);
         sessionStorage.setItem('username', data.data.username);
         sessionStorage.setItem('email', data.data.email);
