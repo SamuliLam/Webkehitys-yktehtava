@@ -31,96 +31,7 @@ header.sticky {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-@media screen and (min-width: 768px) {
-    .container {
-        max-width: 750px;
-    }
 
-    #restaurant-list {
-        font-size: 1.2rem;
-    }
-
-    h1 {
-        font-size: 2.3rem;
-    }
-
-    .heading-box p {
-        font-size: 1.8rem;
-    }
-
-    input {
-        font-size: 1.1rem;
-    }
-
-    button {
-        font-size: 1rem;
-    }
-    #login-form, #signup-form {
-        font-size: 0.805rem;
-    }
-
-}
-
-@media screen and (min-width: 992px) {
-    .container {
-        max-width: 970px;
-    }
-
-    #restaurant-list {
-        font-size: 1.3rem;
-
-    }
-
-    h1 {
-        font-size: 2.3rem;
-    }
-
-    .heading-box p {
-        font-size: 1.8rem;
-    }
-
-    input {
-        font-size: 1.15rem;
-    }
-
-    button {
-        font-size: 1.15rem;
-    }
-    #login-form, #signup-form {
-        font-size: 0.81rem;
-    }
-
-}
-
-@media screen and (min-width: 1200px) {
-    .container {
-        max-width: 1170px;
-    }
-
-    #restaurant-list {
-        font-size: 1.4rem;
-    }
-
-    h1 {
-        font-size: 2.3rem;
-    }
-
-    .heading-box p {
-        font-size: 1.8rem;
-    }
-
-    input {
-        font-size: 1.17rem;
-    }
-
-    button {
-        font-size: 1.17rem;
-    }
-
-    #login-form, #signup-form {
-        font-size: 0.82rem;
-    }
-}
 
 #nav-links {
     font-size: 1.125rem;
@@ -161,58 +72,6 @@ header.sticky {
     display: none;
     cursor: pointer;
     margin-left: 0.2rem;
-}
-
-
-
-@media screen and (max-width: 768px) {
-    #nav-links {
-        display: none;
-    }
-
-    #hamburger-icon {
-        display: inline;
-    }
-
-    h1 {
-        font-size: 40px;
-    }
-
-    .heading-box p {
-        font-size: 1.8rem;
-    }
-
-    input {
-        font-size: 0.9rem;
-    }
-
-    button {
-        font-size: 0.9rem;
-    }
-    #login-form, #signup-form {
-        font-size: 0.8rem;
-    }
-
-    .restaurant-name {
-        max-width: 100px;
-        word-wrap: break-word;
-    }
-
-}
-
-@media screen and (max-width: 600px) {
-
-    h1 {
-        font-size: 30px;
-    }
-
-    .heading-box p {
-        font-size: 1.6rem;
-    }
-
-    #sidebar {
-        width: 200px;
-    }
 }
 
 #sidebar {
@@ -391,8 +250,8 @@ button:hover {
 }
 
 .menu-table th {
-    background-color: #254653; /* Change to your preferred color */
-    color: #FFF8F2; /* Change to your preferred color */
+    background-color: #254653;
+    color: #FFF8F2;
     font-weight: bold;
     padding: 10px;
 }
@@ -444,3 +303,143 @@ footer {
     padding-left: 2rem;
 }
 
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 750px;
+    }
+
+    #restaurant-list {
+        font-size: 1.2rem;
+    }
+
+    h1 {
+        font-size: 2.3rem;
+    }
+
+    .heading-box p {
+        font-size: 1.8rem;
+    }
+
+    input {
+        font-size: 1.1rem;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+    #login-form, #signup-form {
+        font-size: 0.805rem;
+    }
+
+}
+
+@media screen and (min-width: 992px) {
+    .container {
+        max-width: 970px;
+    }
+
+    #restaurant-list {
+        font-size: 1.3rem;
+
+    }
+
+    h1 {
+        font-size: 2.3rem;
+    }
+
+    .heading-box p {
+        font-size: 1.8rem;
+    }
+
+    input {
+        font-size: 1.15rem;
+    }
+
+    button {
+        font-size: 1.15rem;
+    }
+    #login-form, #signup-form {
+        font-size: 0.81rem;
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        max-width: 1170px;
+    }
+
+    #restaurant-list {
+        font-size: 1.4rem;
+    }
+
+    h1 {
+        font-size: 2.3rem;
+    }
+
+    .heading-box p {
+        font-size: 1.8rem;
+    }
+
+    input {
+        font-size: 1.17rem;
+    }
+
+    button {
+        font-size: 1.17rem;
+    }
+
+    #login-form, #signup-form {
+        font-size: 0.82rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #nav-links {
+        display: none;
+    }
+
+    #hamburger-icon {
+        display: inline;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    .heading-box p {
+        font-size: 1.8rem;
+    }
+
+    input {
+        font-size: 0.9rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+    }
+    #login-form, #signup-form {
+        font-size: 0.8rem;
+    }
+
+    .restaurant-name {
+        max-width: 100px;
+        word-wrap: break-word;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .heading-box p {
+        font-size: 1.6rem;
+    }
+
+    #sidebar {
+        width: 200px;
+    }
+}
